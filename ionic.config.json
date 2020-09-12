@@ -1,0 +1,7 @@
+{
+  "name": "S-Home",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
