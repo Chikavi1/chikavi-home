@@ -1,3 +1,30 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+
+  <ion-split-pane when="md" contentId="main">
+    <ion-menu contentId="main">
+
+      <ion-header>
+        <ion-toolbar color="tertiary">
+          <ion-title>S-Home</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list lines="none">
+          <ion-item>Principal</ion-item>
+          <ion-item>Recordatorios</ion-item>
+          <ion-item>Agregar dispositivo</ion-item>
+          <ion-item>Frase Alexa</ion-item>
+          <ion-item>¿Qué puedo hacer?</ion-item>
+          <ion-item>Opcion 2</ion-item>
+          <ion-item>Opcion 3</ion-item>
+          <ion-item>Configuración</ion-item>
+          <ion-item>Salir</ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet id="main"></ion-router-outlet>
+  </ion-split-pane>
+
+ 
 </ion-app>

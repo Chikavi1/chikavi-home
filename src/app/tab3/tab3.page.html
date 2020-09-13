@@ -1,17 +1,59 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  
+  <div>
+    <img style="width: 100%;" src="https://images.unsplash.com/photo-1471445281684-fdf28e036aa8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=801&q=80">
+  </div>
+  <h1 class="ion-padding">Configuración</h1>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-row class="ion-text-center align-items-center">
+    <ion-col size="12">
+      <ion-text><h4>Agregar Dispositivo</h4></ion-text>
+    </ion-col> 
+  </ion-row>
+  <ion-row>
+    <ion-col size="12" >
+      <ion-select [(ngModel)]="addrecord.type" placeholder="Selecciona un tipo">
+        <ion-select-option value="light">Foco</ion-select-option>
+        <ion-select-option value="device">Dispositivo</ion-select-option>
+        <ion-select-option value="sensor">Sensor</ion-select-option>
+
+      </ion-select>
+    </ion-col>
+    <ion-col size="12" >
+      <ion-item>
+        <ion-input [(ngModel)]="addrecord.name" placeholder="Nombre dispositivo"></ion-input>
+      </ion-item>
+    </ion-col>
+    
+    <ion-col size="10" offset="1">
+      <ion-button expand="block" color="success" (click)="AddRecord(addrecord.type, addrecord.name)">Agregar Dispositivo</ion-button>
+    </ion-col>
+  </ion-row> 
+
+  <ion-row>    
+    <ion-col size="12">        
+        <h1 style="margin: 0.8em;">Admnistrar Dispositivos</h1>
+
+    </ion-col>
+
+  </ion-row>
+
+  <ion-slides class="thumbnail margin"  [options]="slide" style="padding: 1.5em;">
+    <ion-slide  class="slider-1" *ngFor="let record of records;">
+      <ion-card style="border-radius: 1em !important;">
+     
+        <ion-card-header>
+          <p (click)="DeleteRecord(record.id)" style="text-align: right;margin-right: 1em;">
+            <ion-icon  style="text-align:left !important;zoom:1.5;color:red" name="trash-outline"></ion-icon>
+          </p>
+          <img *ngIf="record.type == 'light'" src="assets/img/foco.png" width="250" height="250" >
+          <img *ngIf="record.type == 'device'" src="assets/img/tv.png" width="250" height="250" >
+          <img *ngIf="record.type == 'sensor'" src="assets/img/sensor.png" width="250" height="250" >
+          <ion-card-title><p>{{record.name}}</p></ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
 </ion-content>

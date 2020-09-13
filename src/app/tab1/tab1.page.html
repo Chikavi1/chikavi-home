@@ -1,17 +1,63 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div>
+    <img style="width: 100%;height: 50%;" src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="">
+  </div>
+  
+  <p style="color:#c2d0dc;font-size: 1.2em;text-align: center;" class="bold">12 de septiembre del 2020</p>
+    <ion-slides   [options]="slide" style="margin-top:-2em;" >
+      
+      <ion-slide>
+        <div class="ion-padding">
+         
+          <h1>Bienvenido a casa</h1>
+          <h4 style="color:17202F;" class="bold">Luis Rojas</h4>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="ion-padding">
+          <h1 style="color:darkgreen" >Tlaquepaque, Jal.</h1>
+          <h3 style="color:17202F;" class="bold">36 °C</h3>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="ion-padding">
+          <h1>{{ now | date:'hh:mm:s a'}}</h1>
+        </div>
+      </ion-slide>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    </ion-slides>
+
+    <h1 class="ion-padding bold">Mis Dispositivos</h1>
+    <ion-row>
+
+      <ion-col size-lg="6" size-sm="6" size-xs="12" *ngFor="let record of records">
+        <ion-card style="border-radius: 1em !important;">
+          <ion-card-header>
+             <img  *ngIf="record.type == 'light'"src="assets/img/foco.png" width="250" height="250" >
+            <img *ngIf="record.type == 'device'" src="assets/img/tv.png" width="250" height="250" >
+            <img *ngIf="record.type == 'sensor'" src="assets/img/sensor.png" width="250" height="250" >
+            <ion-card-title>
+
+              <ion-item>
+                <ion-label> {{record.status }}</ion-label>
+                <ion-toggle [checked]="record.status" (ionChange)="changeStatus(record.id,record.status)" ></ion-toggle>
+            </ion-item>
+
+
+              
+            </ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+
+
+    </ion-row>
+ 
 </ion-content>
+
+
+
+
+
+
